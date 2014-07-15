@@ -32,12 +32,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	float: left;
 	padding: 10px 0px 0px 0px;
 }
-.top {
-	border-radius:5px;
-	width: 980px;
-	float: left;
-	padding: 0px 10px 10px 10px;
-}
+
 .header {
 	width: 980px;
 	float: left;
@@ -199,17 +194,20 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 }
 
 .register {
-	width: 320px;
-	height: 200px;
-	margin-left: 30px;
+	width: 290px;
+	height: 220px;
+	margin-left: 10px;
 }
 
 .generate {
-	width: 580px;
-	margin-left: 30px;
-	min-height: 220px;
-	overflow-x:hidden;
-	overflow-y:auto;
+	width: 310px;
+	height: 250px;
+	margin-left: 10px;
+}
+
+.insert {
+	width: 330px;
+	margin-left: 10px;
 }
 
 .portlet {
@@ -266,7 +264,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 
 .input {
  	width:240px;
- 	height: 20px;
+ 	height: 30px;
   }
   
 .input:required:invalid, input:focus:invalid {
@@ -283,10 +281,12 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
   }
   
   .button{
+   	height: 30px;
    	padding-left: 20px;
    	padding-right: 20px;
    	margin-right: 20px;
    	margin-left: 20px;
+   	background-image: linear-gradient(to bottom, #E8FFFB 0%, #A4ACDE 100%);
   }
   
  .text {
@@ -295,7 +295,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
  }
  
  .instructions {
- 	display: none;
+ 	display: block;
  	margin-top: 10px;
  	margin-bottom: 10px;
  }

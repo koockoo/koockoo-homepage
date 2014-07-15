@@ -7,8 +7,6 @@
 	});
 	
 	self.init = function() {
-		self.showHideStyle = "more out";
-		$("#showHideInstructions").on("click", self.showHideInstractions);
 		$("#createButton").on("click", self.createAccount);
 		$("#generateButton").on("click", self.generateSnippet);
 		$( "#ul-slogans" ).find( "li" ).hover( self.hoverIn, self.hoverOut);
@@ -21,7 +19,7 @@
 		self.messages = new Array();
 		self.messages[0] = {
 				bgimage:"url('homepage/img/man-question.jpg'), linear-gradient(to right, #FFFFFF 50%, #CCF 100%)",
-				text: "1 Create your account in 1 click.<br><br>2. Insert code fragment into your Webpage.<br><br>3. You are all set to chat. Just launch operator app."
+				text: "1. Create your account in 1 click.<br><br>2. Generate Code Fragment.<br><br>3. Insert Code Fragment into your Webpage."
 			};
 		self.messages[1] = {
 				bgimage:"url('homepage/img/man-ok.jpg'), linear-gradient(to right, #FFFFFF 50%, #CCF 100%)",
@@ -35,18 +33,6 @@
 				bgimage:"url('homepage/img/man-operator.jpg'), linear-gradient(to right, #FFFFFF 50%, #CCF 100%)",
 				text: "Add as many operators as you need to your account for free.<br><br> No per operator fee, no package deals, no promotions."
 			};
-	};
-	
-	self.showHideInstractions = function (event) {
-		var el = $("#showHideInstructions");
-		var cls = el.attr('class');
-		el.attr('class', self.showHideStyle);
-		self.showHideStyle = cls;
-		if ($("#instructions").css("display") == "block") {
-			$("#instructions").css("display", "none");
-		} else {
-			$("#instructions").css("display", "block");
-		}
 	};
 	
 	self.hoverIn = function(event) {

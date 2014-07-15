@@ -34,7 +34,6 @@
 	<div class="main" >
 
 		<div class="page">
-			<div class="top">
 						<div class="welcome">
 							<p>
 							<h3>Welcome to Koockoo!</h3>
@@ -53,13 +52,13 @@
 							<div id="details" class="portlet details">
 								<span>
 									1. Create your account in 1 click.<br><br>
-									2. Insert code fragment into your Webpage.<br><br>
-									3. You are all set to chat. Just launch operator app.
+									2. Generate Code Fragment.
+									3. Insert Code Fragment into your Webpage.<br><br>
 								</span>
 							</div>
 						</div>
 						
-						<div class="row2">
+						<div class="row1">
 							<div class="portlet section register">
 								<div class="subheader">
 									<span class="subtitle">Create Account</span>
@@ -79,45 +78,43 @@
 
 							<div class="portlet section generate">
 								<div class="subheader">
-									<span class="subtitle">Generate code snippet</span>
+									<span class="subtitle">Generate Code Snippet</span>
 								</div>	
 								<div class="subcontent">
-								<div class="field">
-									<input id="snippetEmail" class="input" width="200px" type="email" name="email" required placeholder="Enter your account email address" />
-									<input id="generateButton" type="button" class="button" value="Generate Code"/>
-								</div>	
-								<div class="field">
-									<textarea id="snippetArea" rows="4" cols="64" onclick="this.focus();this.select()"  wrap="off" readonly="readonly"></textarea>
-								</div>	
-								<div id="showHideInstructions" class="more in">read more</div>
-								<div id="instructions" class="instructions">
-														
-									<span class="text">
-										<p>
-										To complete the process, you must have access to your website source code, <br>
-										be relatively comfortable with HTML (or have a developer that can help you), <br> 
-										and have a <b>KOOCKOO</b> account set up. <br>
-										</p><br>
-										<p>
-										Everything in this box is your code snippet.
-										The code contains a unique ID that corresponds to your KOOCKOO account. 
-										</p><br>
-										<p>
-										Copy the snippet. Don't edit your snippet. Just copy it. <br>
-										Paste your snippet into every web page where you want to see the "Live Chat" button.<br>
-										Paste it immediately before the closing /head> tag.
-										</p>
-									</span>	
+									<div class="field">
+										<input id="snippetEmail" class="input" width="200px" type="email" name="email" required placeholder="Enter your account email address" />
+									</div>	
+									<div class="field">
+										<textarea id="snippetArea" rows="5" cols="30" onclick="this.focus();this.select()"  wrap="off" readonly="readonly"></textarea>
+									</div>	
+									<input id="generateButton" type="button" class="button" value="Generate Code"/>								
 								</div>
-								
-							</div>
 							</div>
 							
+							<div class="portlet section insert">
+								<div class="subheader">
+									<span class="subtitle">Insert Code Snippet</span>
+								</div>	
+								<div class="subcontent text">
+									<p>
+									Everything in the box is your code snippet.
+									The code contains a unique ID that corresponds to your KOOCKOO account. 
+									</p><br>
+									
+									<p>
+									Copy the snippet and paste your snippet into every web page where you want to see the "Live Chat" button.
+									Paste it immediately before the closing <span style="color:blue">&lt;/head&gt;</span> tag.
+									</p><br>
+
+									<p>
+									To complete the process, you must have access to your website source code and 
+									be relatively comfortable with HTML (or have a developer that can help you). 
+									</p><br>
+
+								</div>
+							</div>
 						</div>
-
-			</div>
-
-		</div>
+				</div>
 	</div>
  </body>
 </html>
