@@ -10,111 +10,129 @@
 <script type="text/javascript" src="client/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="homepage/js/main.js"></script>
 <script type="text/javascript">
-  var _koockoo = {'id':'100'};
-  function startChat(e) {
+	var _koockoo = {
+		'id' : '100'
+	};
+	function startChat(e) {
 		if (!_koockoo.chatWindow) {
-			_koockoo.chatWindow = window.open("client/chat.html", "Online Chat", "height=600,width=600,titlebar=no,location=no");
+			_koockoo.chatWindow = window.open("client/chat.html",
+					"Online Chat",
+					"height=600,width=600,titlebar=no,location=no");
 		}
 		_koockoo.chatWindow.focus();
-	}  
-</script>			
+	}
+</script>
 </head>
 <body>
 	<div class="outer">
 		<div class="topmenu">
 			<ul>
-				<li><a href="index.html"><img src="homepage/img/logo_small1.png"></img><span></span></a></li>
-				<li><a href="operator/start.html" target="_blank"><span>Operator&nbsp;Sign in</span></a></li>
+				<li><a href="index.html"><img
+						src="homepage/img/logo_small1.png"></img><span></span></a></li>
+				<li><a href="operator/start.html" target="_blank"><span>Operator&nbsp;Sign
+							in</span></a></li>
 				<li><a href="#"><span>Manage&nbsp;your&nbsp;account</span></a></li>
-				<li><a id="achat" href="#" onclick="startChat();return false;"><span>Chat With Us</a></li>
+				<li><a id="achat" href="#" onclick="startChat();return false;"><span>Chat
+							With Us</a></li>
 			</ul>
 		</div>
 	</div>
 
-	<div class="main" >
+	<div class="main">
 
 		<div class="page">
-						<div class="welcome">
-							<p>
-							<h3>Welcome to Koockoo!</h3>
-							<b>Free hosted web chat to connect your web site visitors or clients with your operators or support team.<b>
-							</p>
-						</div>
-						<div class="row1">
-							<div>
-								<ul id="ul-slogans" class="slogans">
-									<li class="selected">How it works?</li>
-									<li>Free, Simple, Hosted</li>
-									<li>No trial deadlines</li>
-									<li>Free unlimited operators</li>
-								</ul>
-							</div>
-							<div id="details" class="portlet details">
-								<span>
-									1. Create your account in 1 click.<br><br>
-									2. Generate Code Fragment.
-									3. Insert Code Fragment into your Webpage.<br><br>
-								</span>
-							</div>
-						</div>
-						
-						<div class="row1">
-							<div class="portlet section register">
-								<div class="subheader">
-									<span class="subtitle">Create Account</span>
-								</div>
-								<div class="field">
-									<input id="nameInput" class="input" width="200px" type="text" name="dispalyName" required placeholder="Display Name" /><br>
-								</div>
-								<div class="field">
-									<input id="emailInput" class="input" width="200px" type="email" name="email" required placeholder="Email Address" /><br>
-								</div>
-								<div class="field">
-									<input id="passwordInput" class="input" width="200px" type="password" name="password" required placeholder="Password" /><br>
-								</div>
-								<input id="createButton" type="button" class="button" value="Create"/>
-								<span id="createStatus"></span>
-							</div>
-
-							<div class="portlet section generate">
-								<div class="subheader">
-									<span class="subtitle">Generate Code Snippet</span>
-								</div>	
-								<div class="subcontent">
-									<div class="field">
-										<input id="snippetEmail" class="input" width="200px" type="email" name="email" required placeholder="Enter your account email address" />
-									</div>	
-									<div class="field">
-										<textarea id="snippetArea" rows="5" cols="30" onclick="this.focus();this.select()"  wrap="off" readonly="readonly"></textarea>
-									</div>	
-									<input id="generateButton" type="button" class="button" value="Generate Code"/>								
-								</div>
-							</div>
-							
-							<div class="portlet section insert">
-								<div class="subheader">
-									<span class="subtitle">Insert Code Snippet</span>
-								</div>	
-								<div class="subcontent text">
-									<p>
-									Everything in the box is your code snippet.
-									The code contains a unique ID that corresponds to your KOOCKOO account. 
-									</p><br>
-									
-									<p>
-									Copy the snippet and paste your snippet into every web page where you want to see the "Live Chat" button.
-									Paste it immediately before the closing <span style="color:blue">&lt;/head&gt;</span> tag.
-									</p><br>
-
-									<p>
-									To complete the process, you must have access to your website source code and 
-									be relatively comfortable with HTML (or have a developer that can help you). 
-									</p><br>
-
-								</div>
-							</div>
-						</div>
+			<div class="welcome">
+				<br>
+				<h3>Welcome to Koockoo!</h3>
+				<br>
+				<h3>Free hosted web chat to connect your web site visitors with
+					your support team.</h3>
+			</div>
+			<div class="row1">
+				<div>
+					<ul id="ul-slogans" class="slogans">
+						<li class="selected">How it works?</li>
+						<li>Free, Simple, Hosted</li>
+						<li>No trial deadlines</li>
+						<li>Free unlimited operators</li>
+					</ul>
 				</div>
+				<div id="details" class="portlet details">
+					<span> 1. Create your account in 1 click.<br>
+					<br> 2. Generate Code Fragment. 3. Insert Code Fragment into
+						your Webpage.<br>
+					<br>
+					</span>
+				</div>
+			</div>
+
+			<div class="row1">
+				<div class="portlet section register">
+					<div class="subheader">
+						<span class="subtitle">Create Account</span>
+					</div>
+					<div class="field">
+						<input id="nameInput" class="input" width="200px" type="text"
+							name="dispalyName" required placeholder="Display Name" /><br>
+					</div>
+					<div class="field">
+						<input id="emailInput" class="input" width="200px" type="email"
+							name="email" required placeholder="Email Address" /><br>
+					</div>
+					<div class="field">
+						<input id="passwordInput" class="input" width="200px"
+							type="password" name="password" required placeholder="Password" /><br>
+					</div>
+					<input id="createButton" type="button" class="button"
+						value="Create" /> <span id="createStatus"></span>
+				</div>
+
+				<div class="portlet section generate">
+					<div class="subheader">
+						<span class="subtitle">Generate Code Snippet</span>
+					</div>
+					<div class="subcontent">
+						<div class="field">
+							<input id="snippetEmail" class="input" width="200px" type="email"
+								name="email" required
+								placeholder="Enter your account email address" />
+						</div>
+						<div class="field">
+							<textarea id="snippetArea" rows="5" cols="30"
+								onclick="this.focus();this.select()" wrap="off"
+								readonly="readonly"></textarea>
+						</div>
+						<input id="generateButton" type="button" class="button"
+							value="Generate Code" />
+					</div>
+				</div>
+
+				<div class="portlet section insert">
+					<div class="subheader">
+						<span class="subtitle">Insert Code Snippet</span>
+					</div>
+					<div class="subcontent text">
+						<p>Everything in the box is your code snippet. The code
+							contains a unique ID that corresponds to your KOOCKOO account.</p>
+						<br>
+
+						<p>
+							Copy the snippet and paste your snippet into every web page where
+							you want to see the "Live Chat" button. Paste it immediately
+							before the closing <span style="color: blue">&lt;/head&gt;</span>
+							tag.
+						</p>
+						<br>
+
+						<p>To complete the process, you must have access to your
+							website source code and be relatively comfortable with HTML (or
+							have a developer that can help you).</p>
+						<br>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
- </body>
+</body>
 </html>
