@@ -11,28 +11,18 @@
 		$("#generateButton").on("click", self.generateSnippet);
 		$( "#ul-slogans" ).find( "li" ).hover( self.hoverIn, self.hoverOut);
 		self.interval = 10000;
+		self.prevIdx = 0; 
+		self.selectedIdx = 0;
 		self.selectNextSlogan();
 		self.lookupService();
 	};
 	
 	self.initSlogans = function() {
 		self.messages = new Array();
-		self.messages[0] = {
-				bgimage:"url('homepage/img/man-question.jpg'), linear-gradient(to right, #FFFFFF 50%, #CCF 100%)",
-				text: "1. Create your account in 1 click.<br><br>2. Generate Code Fragment.<br><br>3. Insert Code Fragment into your Webpage."
-			};
-		self.messages[1] = {
-				bgimage:"url('homepage/img/man-ok.jpg'), linear-gradient(to right, #FFFFFF 50%, #CCF 100%)",
-				text: "Yes it's free!<br><br>There is no cost to you to start using our chat.<br><br>Our chat is fully hosted.<br> No downloads and installations on your site."
-			};
-		self.messages[2] = {
-				bgimage:"url('homepage/img/man-nocare.png'), linear-gradient(to right, #FFFFFF 50%, #CCF 100%)",
-				text: "No free trial axe by your neck. <br><br> Free subscription never expires.<br><br> Use it as long as you need it."
-			};
-		self.messages[3] = {
-				bgimage:"url('homepage/img/man-operator.jpg'), linear-gradient(to right, #FFFFFF 50%, #CCF 100%)",
-				text: "Add as many operators as you need to your account for free.<br><br> No per operator fee, no package deals, no promotions."
-			};
+		self.messages[0] = {id:"#detail1"};
+		self.messages[1] = {id:"#detail2"};
+		self.messages[2] = {id:"#detail3"};
+		self.messages[3] = {id:"#detail4"};
 	};
 	
 	self.hoverIn = function(event) {
@@ -43,6 +33,7 @@
 		}
 		self.selectedSlogan = $(event.target);
 		$(self.selectedSlogan).addClass("selected");
+		self.prevIdx = self.selectedIdx; 
 		self.selectedIdx = $( "#ul-slogans li" ).index( self.selectedSlogan );
 		self.setMessage();
 	};
@@ -66,6 +57,7 @@
 		} else {
 			self.selectedSlogan = $( "#ul-slogans" ).find( "li" ).first();
 		}
+		self.prevIdx = self.selectedIdx; 
 		self.selectedIdx = $( "#ul-slogans li" ).index( self.selectedSlogan );
 		$(self.selectedSlogan).addClass("selected");
 		self.setMessage();
@@ -73,9 +65,10 @@
 	};
 	
 	self.setMessage = function() {
-		var msg = self.messages[self.selectedIdx];
-		$("#details span").html(msg.text);
-		$("#details").css("background-image",msg.bgimage);
+		var prev = self.messages[self.prevIdx];
+		var next = self.messages[self.selectedIdx];
+		$(prev.id).css("display","none");
+		$(next.id).css("display","block");
 	};
 	
 	self.createAccount = function() {
