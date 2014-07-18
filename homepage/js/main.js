@@ -88,9 +88,14 @@
 	};
 	
 	self.onCreateAccountSuccess = function (result) {
-		$("#snippetEmail").val($("#emailInput").val());
-		$("#createStatus").html("Success");
-		$("#createStatus").removeClass().addClass( "success" );		
+		if (result.success) {
+			$("#snippetEmail").val($("#emailInput").val());
+			$("#createStatus").html("Success");
+			$("#createStatus").removeClass().addClass( "success" );
+		} else {
+			$("#createStatus").html(result.message);
+			$("#createStatus").removeClass().addClass( "invalid" );
+		}
 	};
 	
 	self.onCreateAccountFail= function (result) {
@@ -106,10 +111,10 @@
 	};
 	
 	self.onGenerateSnippetSuccess = function(result) {
-		if (result.success==true) {
+		if (result.data) {
 			$("#snippetArea").val(result.data);
 		} else {
-			$("#snippetArea").val("No koockoo account associated with provided email adress");
+			$("#snippetArea").val(result.message);
 		}	
 	};
 
@@ -152,7 +157,8 @@
 	chatApi.generate = function(email, onSuccess, onError) {
 		$.ajax({
 			type: "GET",
-			url : chatApi.baseUrl+"account/snippet/"+email,
+			url : chatApi.baseUrl+"account/snippet",
+			data : {email:email},
 			dataType : "json"
 		})
 		.done(onSuccess)
