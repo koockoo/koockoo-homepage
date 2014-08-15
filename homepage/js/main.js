@@ -2,11 +2,25 @@
 	var self = {};
 	
 	$(document).ready(function(){
+		self.initServices();
 		self.initSlogans();
-		self.init();	
+		self.initContent();	
 	});
 	
-	self.init = function() {
+	/** initialize service endpoints */
+	self.initServices = function () {
+		$('.register :input').attr('disabled', true);
+		$('.generate :input').attr('disabled', true);
+		koockoo.service.init(self.onServiceInitialized);
+	};
+	
+	self.onServiceInitialized = function() {
+		$('.register :input').removeAttr('disabled');
+		$('.generate :input').removeAttr('disabled');
+		console.log("service enpoints are initialized");
+	};
+	
+	self.initContent = function() {
 		$("#createButton").on("click", self.createAccount);
 		$("#generateButton").on("click", self.generateSnippet);
 		$( "#ul-slogans" ).find( "li" ).hover( self.hoverIn, self.hoverOut);
@@ -14,7 +28,6 @@
 		self.prevIdx = 0; 
 		self.selectedIdx = 0;
 		self.selectNextSlogan();
-		self.lookupService();
 	};
 	
 	self.initSlogans = function() {
@@ -125,26 +138,11 @@
 	/******************** account service api definiton **************************/
 	var chatApi = {};
 	
-	// find available service
-	self.lookupService = function() {
-		if (location.href.indexOf("file") >-1 || location.href.indexOf("localhost")>-1) {
-			chatApi.baseUrl = "http://localhost:8080/koockoo-services/";
-		} else {
-			$.ajax({
-				url : "http://chatservicelocator.appspot.com/services/any",
-				dataType : "json",
-				success : function onSuccess(response) {
-					chatApi.baseUrl = response.url+"/koockoo-services/";
-				}
-			});	
-		}
-	};
-	
 	/** express registration */
 	chatApi.register = function(displayName, email, password, onSuccess, onError) {
 		$.ajax({
-			type: "POST",
-			url : chatApi.baseUrl+"account/express",
+			type: koockoo.service.account.express.type,
+			url : koockoo.service.account.express.url,
 			data : {displayName:displayName, email:email, password:password}
 		})		
 		.done(onSuccess)
@@ -156,8 +154,8 @@
 	 */
 	chatApi.generate = function(email, onSuccess, onError) {
 		$.ajax({
-			type: "GET",
-			url : chatApi.baseUrl+"account/snippet",
+			type: koockoo.service.account.snippet.type,
+			url : koockoo.service.account.snippet.url,
 			data : {email:email},
 			dataType : "json"
 		})
