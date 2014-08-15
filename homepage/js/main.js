@@ -20,6 +20,12 @@
 		console.log("service enpoints are initialized");
 	};
 	
+	self.onServiceInitializedFail = function() {
+		console.log("service enpoints fail to initialize");
+		$("#createStatus").html("Service Unavailable");
+		$("#createStatus").removeClass().addClass( "invalid" );		
+	};
+	
 	self.initContent = function() {
 		$("#createButton").on("click", self.createAccount);
 		$("#generateButton").on("click", self.generateSnippet);

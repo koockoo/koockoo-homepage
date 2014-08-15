@@ -11,7 +11,8 @@ var koockoo = koockoo || {};
 	koockoo.service = {};
 	
 	var self = {
-		localIps: [],
+		localTry: 0,
+		localIps: ["http://192.168.1.148:8080"],
 		localUrl: "http://localhost:8080/koockoo-services",
 		balancer: "http://chatservicelocator.appspot.com/services/any",
 		baseUrl: "",
@@ -26,14 +27,22 @@ var koockoo = koockoo || {};
 	
 	/** Invoke external call back if any when service is ready to consume*/
 	self.onServiceReady = function () {
-		self.successCallback();
+		if (self.successCallback) {
+			self.successCallback();
+		}
+	};
+	
+	self.onServiceFail = function () {
+		if (self.failCallback) {
+			self.failCallback();
+		}
 	};
 	/** 
 	 * look up available service endpoint.
 	 * JS running from the file or localhost will connect to localhost only.
 	 * 
 	 *  When running from the website always connect to public service.
-	 *  if PC and public service both are in home network this will connect to hardcoded home ip.
+	 *  if PC and returned public service are in home network this will connect to hardcoded local ip.
 	 */
 	self.lookupService = function() {
 		if (location.href.indexOf("file") >-1 || location.href.indexOf("localhost")>-1) {
@@ -45,19 +54,62 @@ var koockoo = koockoo || {};
 				url : self.balancer,
 				method: "GET",
 				dataType : "json",
-				success : function onSuccess(response) {
-						self.baseUrl = response.url+"/koockoo-services";
-						self.initUrls();
-						self.onServiceReady();
-				}
+				success : self.onGetBaseUrlSuccess,
+				failure: self.onGetBaseUrlFail,
+				error: self.onGetBaseUrlFail
 			};
-			
-			if ($ && $.ajax) {
-				$.ajax(request);
-			} else if (Ext && Ext.Ajax){
-			    Ext.Ajax.request(request);
-			}	
+			self.ajax(request);
 		}
+	};
+	
+	/** base url retrieved. now let's ping the service for availability */
+	self.onGetBaseUrlSuccess = function(response) {
+		self.baseUrl = response.url+"/koockoo-services";
+		self.pingBaseUrl();
+	};
+
+	/** base url retrieved. now let's ping the service for availability */
+	self.onPingBaseUrlSuccess = function(response) {
+		self.initUrls();
+		self.onServiceReady();
+	};
+	
+	/** base url is not retrieved. fail */
+	self.onGetBaseUrlFail = function(response) {
+		self.onServiceFail();
+	};
+
+	/** ping the service for availability */
+	self.pingBaseUrl = function(url) {
+		var request = {
+				url : self.baseUrl+"/ping",
+				method: "GET",
+				dataType : "json",
+				timeout: 5000,
+				success : self.onPingBaseUrlSuccess,
+				failure: self.retryLocalUrl,
+				error: self.retryLocalUrl
+			};
+		
+		self.ajax(request);
+	};
+	
+	self.retryLocalUrl = function() {
+		if (self.localTry < self.localIps.length) {
+			self.baseUrl = self.localIps[self.localTry]+"/koockoo-services";
+			self.localTry++;
+			self.pingBaseUrl();
+		} else {
+			self.onGetBaseUrlFail();
+		}
+	};
+	
+	self.ajax = function(request){
+		if ($ && $.ajax) {
+			$.ajax(request);
+		} else if (Ext && Ext.Ajax){
+		    Ext.Ajax.request(request);
+		}		
 	};
 	
 	/** initialize services urls */
