@@ -12,7 +12,7 @@ var koockoo = koockoo || {};
 	
 	var self = {
 		localTry: 0,
-		localIps: ["http://192.168.1.148:8080"],
+		localIps: ["http://192.168.1.148:8080", "http://192.168.1.71:8080"],
 		localUrl: "http://localhost:8080/koockoo-services",
 		balancer: "http://chatservicelocator.appspot.com/services/any",
 		baseUrl: "",
@@ -64,6 +64,9 @@ var koockoo = koockoo || {};
 	
 	/** base url retrieved. now let's ping the service for availability */
 	self.onGetBaseUrlSuccess = function(response) {
+        if (self.isExt()) {
+            response = Ext.decode(response.responseText);
+        }
 		self.baseUrl = response.url+"/koockoo-services";
 		self.pingBaseUrl();
 	};
@@ -73,7 +76,13 @@ var koockoo = koockoo || {};
 		self.initUrls();
 		self.onServiceReady();
 	};
-	
+
+    /** base url retrieved. now let's ping the service for availability */
+    self.onPingBaseUrlSuccess = function(response) {
+        self.initUrls();
+        self.onServiceReady();
+    };
+
 	/** base url is not retrieved. fail */
 	self.onGetBaseUrlFail = function(response) {
 		self.onServiceFail();
@@ -105,11 +114,11 @@ var koockoo = koockoo || {};
 	};
 	
 	self.ajax = function(request){
-		if ($ && $.ajax) {
+        if (self.isExt()) {
+            Ext.Ajax.request(request);
+        } else {
 			$.ajax(request);
-		} else if (Ext && Ext.Ajax){
-		    Ext.Ajax.request(request);
-		}		
+		}
 	};
 	
 	/** initialize services urls */
@@ -129,5 +138,9 @@ var koockoo = koockoo || {};
 			    snippet:   {url: url+"/snippet", type:'POST'}
 		};	
 	};
+
+    self.isExt = function() {
+        return typeof Ext !== 'undefined'
+    };
 	
 })();
