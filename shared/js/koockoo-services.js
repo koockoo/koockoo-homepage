@@ -136,7 +136,16 @@ var koockoo = koockoo || {};
 			    ping:      {url: url+"/ping", type:'GET'},
 			    express:   {url: url+"/express", type:'POST'}, 
 			    snippet:   {url: url+"/snippet", type:'POST'}
-		};	
+		};
+
+        url = self.baseUrl+"/chatroom";
+        koockoo.service.chatroom = {
+            ping:       {url: url+"/ping", type:'GET'},
+            pending:    {url: url+"/pending", type:'GET'},
+            open:    {url: url+"/open", type:'GET'},
+            close:    {url: url+"/close", type:'GET'},
+            accept:    {url: url+"/accept", type:'GET'}
+        };
 	};
 
     self.isExt = function() {
