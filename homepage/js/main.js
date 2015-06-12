@@ -4,7 +4,8 @@
 	$(document).ready(function(){
 		self.initServices();
 		self.initSlogans();
-		self.initContent();	
+		self.initContent();
+		self.initMenu();
 	});
 	
 	/** initialize service endpoints */
@@ -35,7 +36,15 @@
 		self.selectedIdx = 0;
 		self.selectNextSlogan();
 	};
-	
+
+	self.initMenu = function() {
+		self.selctedPage = '#mainPage';
+		$("#features").on("click", self.goFeatures);
+		$("#docs").on("click", self.goDocs);
+		$("#about").on("click", self.goAbout);
+		$("#contact").on("click", self.goContact);
+	};
+
 	self.initSlogans = function() {
 		self.messages = new Array();
 		self.messages[0] = {id:"#detail1"};
@@ -43,7 +52,38 @@
 		self.messages[2] = {id:"#detail3"};
 		self.messages[3] = {id:"#detail4"};
 	};
-	
+
+
+	self.goDocs = function() {
+		self.showPage('#docPage');
+	};
+
+	self.goAbout = function() {
+		self.showPage('#aboutPage');
+	};
+
+	self.goContact = function() {
+		self.showPage('#contactPage');
+	};
+
+	self.goFeatures = function() {
+		self.showPage('#featurePage');
+	};
+
+	/** show selected page and hide previous one*/
+	self.showPage = function(pageId) {
+		// same page - do nothing
+		if (self.selctedPage == pageId) return;
+
+		// show and hide
+		$('html').css('background','white');
+		$('html').css('background-color','white');
+		$(self.selctedPage).css('display', 'none');
+		$(pageId).css('display', 'block');
+		self.selctedPage = pageId;
+
+	}
+
 	self.hoverIn = function(event) {
 		self.stopNextSlogan = true;
 		clearTimeout(self.timeout);

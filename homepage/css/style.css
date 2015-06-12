@@ -21,16 +21,26 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	margin: 0px;
 }
 
+h4 {
+	#color: #80F700;
+	margin: 20px;
+	line-height: 1em;
+	font-size: 20px;
+	font-family: Gorgia, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	#text-shadow: 1px 1px 1px #000;
+}
+
 .outer {
 	width: 100%;
-	#background: linear-gradient(to bottom, #BAFFFA 0%, #030845 100%);
-    background: linear-gradient(to bottom, #beff9b 0%, #185602 100%);
+	background-image: linear-gradient(to bottom, #c7ffae 0%, #74DF00 100%);
 	height: 50px;
-	
+	position: fixed;
 }
 
 .content {
 	width: 100%;
+
 }
 
 .main {
@@ -41,6 +51,8 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	width: 1000px;
 	float: left;
 	padding: 10px 0px 0px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
 }
 
 .header {
@@ -54,7 +66,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 }
 
 .topmenu {
-	background: linear-gradient(to bottom, #beff9b 0%, #185602 100%);
+	background-image: linear-gradient(to bottom, #c7ffae 0%, #74DF00 100%);
 	width: 800px;
 	height: 50px;
 	margin: 0px auto;
@@ -81,10 +93,10 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	font-size: 16px;
 	font-weight: bold;
 	line-height: 50px;
-	color: #DDD;
+	color: #252;
 	text-decoration: none;
 	display: block;
-	text-shadow: 1px 1px 0.15em #222; 
+	text-shadow: 1px 1px 0.15em #DDD;
 }
 
 .topmenu ul li a img {
@@ -101,11 +113,10 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 }
 
 .topmenu ul li a:hover {
-	#background:linear-gradient(to bottom, #BAFFFA 0%, #071196 100%);
-    background:linear-gradient(to bottom, #c9ffbc 0%, #129606 100%);
-	color: #DBFAFF;
+    background:linear-gradient(to bottom, #ECF6CE 0%, #80FF00 100%);
+	background-image: linear-gradient(to bottom, #ECF6CE 0%, #80FF00 100%);
 	border-raduis: 5px;
-	box-shadow:0px 0px 5px 5px #fafff1;
+	box-shadow:0px 0px 5px 5px #D8F6CE;
 	border-radius: 5px;
 	height: 50px;
 }
@@ -130,11 +141,12 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	height: 100px;
 	margin-left: 20px;
 	margin-right: 20px;
-	color: green;
+	color: #fdfffb;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	font-weight: normal;	
-	text-shadow: 1px 1px 1px white;
+	text-shadow: 1px 1px 1px #1a7408;
+	margin-top: 50px;
 }
 
 .row1 {
@@ -162,12 +174,25 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	text-shadow: 2px 2px 2px #FFF;
 }
 
-
 .details div {
     width: 100%;
     height: 100%;
     display: none;
     background-repeat: no-repeat;
+}
+
+#mainPage {
+	display: block;
+}
+
+.contentPage{
+	display: none;
+	margin-top: 100px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	color: black;
+	width: 100%;
 }
 
 #detail1 {
@@ -208,8 +233,8 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 }
 
 .slogans li.selected {
-	color: #0cd42a;
-	text-shadow:0px 0px 0 rgb(-30,170,0), 1px 1px 0 rgb(-72,128,-42),2px 2px 1px rgba(0,0,0,0.6),2px 2px 1px rgba(0,0,0,0.5),0px 0px 1px rgba(0,0,0,.2);	
+	color: #80FF00;
+	text-shadow:0px 0px 0 rgb(-30,170,0), 1px 1px 0 rgb(0, 247, 0),2px 2px 1px rgba(0,0,0,0.6),2px 2px 1px rgba(0,0,0,0.5),0px 0px 1px rgba(0, 0, 0, 0.68);
 }
 
 .slogans li:hover {
@@ -246,6 +271,11 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 	margin-left: 20px;
 }
 
+.docportlet {
+	float: none;
+	clear: both;
+}
+
 .portlet {
 	float: left;
 	border-radius:0px;
@@ -255,8 +285,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 
 .portlet .subheader {
 	background-color: #e8eae9;
-	#background-image: linear-gradient(to bottom, #E8FFFB 0%, #A4ACDE 100%);
-    background-image: linear-gradient(to bottom, #c7ffae 0%, #598b1d 100%);
+	background-image: linear-gradient(to bottom, #c7ffae 0%, #74DF00 100%);
 	height: 40px;
 	width: 100%;
 	border-bottom: 2px solid #CCC;
@@ -265,11 +294,11 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
 .portlet .subtitle {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
-	font-weight: normal;
-	color: #333;
+	font-weight: bold;
+	color: #252;
 	padding: 10px;
 	line-height: 40px;
-	text-shadow: 2px 1px 2px #EEE; 
+	text-shadow: 2px 1px 2px #DDD;
 }
 
 .portlet .subcontent {
@@ -323,7 +352,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, input, textarea {
    	padding-right: 20px;
    	margin-right: 20px;
    	margin-left: 20px;
-   	background-image: linear-gradient(to bottom, #E8FFFB 0%, #A4ACDE 100%);
+	background-image: linear-gradient(to bottom, #c7ffae 0%, #3ce812 100%);
   }
   
  .text {
